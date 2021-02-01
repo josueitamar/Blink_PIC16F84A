@@ -1,0 +1,42 @@
+/*
+ * File:   Traffic Lights.c
+ * Author: DrakerDG (c)
+ * Microcontroller: PIC16F84A
+ * IDE: MPLab X
+ * Compiler: XC8
+  */
+
+#include <xc.h>
+#define _XTAL_FREQ 20000000 //Specify the XTAL crystall FREQ
+// BEGIN CONFIG
+#pragma config FOSC = HS // Oscillator Selection bits (HS oscillator)
+#pragma config WDTE = OFF // Watchdog Timer Enable bit (WDT enabled)
+#pragma config PWRTE = OFF // Power-up Timer Enable bit (PWRT disabled)
+#pragma config CP = OFF // Flash Program Memory Code Protection bit (Code protection off)
+// END CONFIG
+
+void main(void) {
+    TRISB = 0; // PORTB bits do outputs
+    PORTB = 0x00; // Makes all pins of PORTB Logic Low
+    
+    while(1)
+    {
+        RB0 = 1;
+        __delay_ms(5000);
+        RB0 = 0;
+
+        RB1 = 1;
+        __delay_ms(1000);
+        RB1 = 0;
+
+        RB2 = 1;
+        __delay_ms(5000);
+        RB2 = 0;
+
+        RB3 = 1;
+        __delay_ms(1000);
+        RB3 = 0;
+
+    }
+    return;
+}
